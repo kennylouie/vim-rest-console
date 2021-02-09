@@ -492,9 +492,8 @@ function! s:GetCurlCommand(request)
   if !empty(a:request.dataBody)
     call add(curlArgs, s:GetCurlDataArgs(a:request))
   endif
-  let vrcCurlTimeout = s:GetOpt('vrc_curl_timeout', '1m')
   return [
-    \ 'timeout ' . vrcCurlTimeout . ' curl ' . join(curlArgs) . ' ' . s:Shellescape(a:request.host . a:request.requestPath),
+    \ 'curl ' . join(curlArgs) . ' ' . s:Shellescape(a:request.host . a:request.requestPath),
     \ curlOpts
   \]
 endfunction
